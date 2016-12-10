@@ -16,9 +16,15 @@ app.use(sassMiddleware({
 
 app.use(express.static("public"));
 
-app.get('/', (req, res)=>{res.sendFile(process.cwd() + '/public/layout.html')})
+app.get('/', (req, res)=>{res.sendFile(process.cwd() + '/public/layout.html')});
 
 
 
-// Command to run Server: nodemon ./server.js localhost 3000
-http.createServer(app).listen(3000);
+// Command to run Server: nodemon ./server.js
+
+http.createServer(app).listen(process.env.PORT, process.env.IP);
+
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+})
