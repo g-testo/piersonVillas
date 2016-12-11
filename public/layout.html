@@ -1,11 +1,34 @@
 <!doctype html>
 <html lang="en" ng-app="app">
   <head>
-      <title>node-express</title>
-      <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-      <link rel="stylesheet" , href="/stylesheets/home.css" />
-    </head>
-
+    <meta charset="utf-8">
+    <base href="/">
+    <title>node-express</title>
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" , href="/stylesheets/header.css" />
+  </head>
+  
+  <header>
+    <div class="navbar">
+      <ul class="navbar_wrapper">
+        <li>Home</li>
+        <li>About</li>
+        <li>Available Soon</li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+    
+  <div class="header_title"> 
+    Pierson Villas Apartments
+  </div>
+  
+  <div class="header_sub_title">
+      Modern Apartments in the Melrose District
+  </div>
+  
+  </header>
+  
+  <body>
     <div>
       <ng-view></ng-view>
     </div>
@@ -14,4 +37,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
     <script type='text/javascript' src='/js/angular.js'></script>
   </body>
+  <footer>
+    © 2016 Pierson Villas
+  </footer>
+  
 </html>

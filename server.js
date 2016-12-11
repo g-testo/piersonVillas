@@ -5,6 +5,7 @@ var sass = require('node-sass');
 var sassMiddleware = require('node-sass-middleware');
 var http = require('http');
 var app = express();
+var path = require('path');
 
 app.use(sassMiddleware({
         src: __dirname + '/public/sass',
@@ -13,10 +14,21 @@ app.use(sassMiddleware({
         outputStyle: 'compressed',
         prefix:  '/stylesheets'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
       }));
+      
+// view engine setup
+app.set('./public', path.join(__dirname, './public'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(express.static("public"));
 
 app.get('/', (req, res)=>{res.sendFile(process.cwd() + '/public/layout.html')});
+
+
+// angular routing refreshing issue fix after removing # 
+app.use(function(req, res) {
+    res.sendFile(__dirname + '/public/layout.html');
+});
 
 // Command to run Server: nodemon ./server.js
 
