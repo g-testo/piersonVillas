@@ -14,7 +14,7 @@ app.use(sassMiddleware({
         outputStyle: 'compressed',
         prefix:  '/stylesheets'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
       }));
-      
+
 // view engine setup
 app.set('./public', path.join(__dirname, './public'));
 app.engine('html', require('ejs').renderFile);
@@ -24,6 +24,9 @@ app.use(express.static("public"));
 
 app.get('/', (req, res)=>{res.sendFile(process.cwd() + '/public/layout.html')});
 
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
 // angular routing refreshing issue fix after removing # 
 app.use(function(req, res) {
@@ -33,6 +36,7 @@ app.use(function(req, res) {
 // Command to run Server: nodemon ./server.js
 
 http.createServer(app).listen(process.env.PORT, process.env.IP);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,6 +68,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
 
 module.exports = app;

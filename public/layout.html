@@ -3,42 +3,75 @@
   <head>
     <meta charset="utf-8">
     <base href="/">
-    <title>node-express</title>
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Pierson Villas</title>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" , href="/stylesheets/home.css" />
+    <link rel="stylesheet" , href="/stylesheets/available.css" />
+    <link rel="stylesheet" , href="/stylesheets/contact.css" />
     <link rel="stylesheet" , href="/stylesheets/header.css" />
+    <link rel="stylesheet" , href="/stylesheets/about.css" />
+    <link rel="stylesheet" , href="/stylesheets/calender.css" />
+    <link rel="stylesheet" , href="/node_modules/angular-calendar/dist/css/angular-calendar.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    
   </head>
   
   <header>
-    <div class="navbar">
-      <ul class="navbar_wrapper">
-        <li>Home</li>
-        <li>About</li>
-        <li>Available Soon</li>
-        <li>Contact Us</li>
-      </ul>
-    </div>
-    
-  <div class="header_title"> 
-    Pierson Villas Apartments
-  </div>
-  
-  <div class="header_sub_title">
-      Modern Apartments in the Melrose District
-  </div>
-  
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"href="/home">Pierson Villas Apartments</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            
+            <li class="active"><li><a href="/about">About</a><span class="sr-only">(current)</span></a></li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Availability<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/calender">Calender</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/1bed1bath">1 Bedroom / 1 Bathroom</a></li>
+                <li><a href="/2bed1bath">2 Bedroom / 1 Bathroom</a></li>
+              </ul>
+            </li>
+            
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://www.facebook.com/Pierson-Villas-Apartments-1089768911143324/"><img src="images/facebook.png" alt="Facebook Icon" height="30" width="30"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
   
   <body>
     <div>
       <ng-view></ng-view>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
     <script type='text/javascript' src='/js/angular.js'></script>
   </body>
-  <footer>
-    © 2016 Pierson Villas
+  
+  
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">© 2016 Pierson Villas</p>
+    </div>
   </footer>
   
 </html>

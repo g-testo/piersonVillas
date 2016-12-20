@@ -1,13 +1,31 @@
-.navbar{
-    color:black;
+body {
+	margin:0;
+	padding:0;
 }
-.navbar_wrapper{
-    color:black;
+.container-fluid{
+	max-width:1000px
 }
-
-.header_title{
-    font-size: 3em;
+.container-fluid a {
+   outline: 0;
 }
-.header_sub_title{
-        font-size: 1em;
+.home_img_wrapper,.about_img_wrapper {
+	text-align:center;
+	padding-top:80px
+}
+.home_img_wrapper img,.about_img_wrapper img {
+	width:90%;
+	max-width:1000px;
+	min-width:300px
+}
+.page_titles {
+	font-size:3em;
+	text-align:center
+}
+footer {
+	margin:auto;
+	text-align:center
+}
+p{
+	text-align:center;
+	padding: 30px 50px 0px 50px;
 }
