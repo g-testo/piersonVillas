@@ -1,11 +1,52 @@
 'use strict';
 
+var dotenv = require('dotenv').config();
 var express = require('express');
 var sass = require('node-sass');
 var sassMiddleware = require('node-sass-middleware');
 var http = require('http');
 var app = express();
 var path = require('path');
+var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
+var mg = require('nodemailer-mailgun-transport');
+
+var auth = {
+  auth: {
+    api_key: process.env.MG_KEY,
+    domain: 'mg.testophotography.com'
+  }
+};
+
+var nodemailerMailgun = nodemailer.createTransport(mg(auth));
+
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+
+app.post('/contact', function(req, res) {
+    nodemailerMailgun.sendMail({
+      from: 'website@testophotography.com',
+      to: 'cryptomonger@hotmail.com', // An array if you have multiple recipients.
+    //   cc:'second@domain.com',
+    //   bcc:'secretagent@company.gov',
+      subject: req.body.subject,
+      'h:Reply-To': 'gtesto@testophotography.com',
+      //You can use "html:" to send HTML email content. It's magic!
+      html: "From: " +  req.body.name + "<br><br>Email: " + req.body.email + "<br><br>Phone: " + req.body.mobile + "<br><br>Message: <br><br>" + req.body.message
+      // //You can use "text:" to send plain-text content. It's oldschool!
+      // text: 
+      
+    }, function (err, info) {
+      if (err) {
+        console.log('Error: ' + err);
+      }
+      else {
+        console.log('Response: ' + info);
+      }
+    });
+});
 
 app.use(sassMiddleware({
         src: __dirname + '/public/sass',

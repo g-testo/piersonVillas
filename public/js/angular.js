@@ -53,29 +53,19 @@ app.config(function($routeProvider, $locationProvider) {
     app.controller('2bed1bathController', function($scope) {
         $scope.title = '1 Bedroom & 2 Bathroom';
     });
-    app.controller('contactController', ['$scope', '$http', function($scope, $http) {
-        $scope.title = 'Contact Page';
-        
-        this.sendMail = function () {
- 
-            var data = ({
-                contactName : this.name,
-                contactEmail : this.email,
-                contactMsg : this.message
-            });
- 
-            // Simple POST request example (passing data) :
-            $http.post('/contact', data).
-                success(function(data, status, headers, config) {
-                    // this callback will be called asynchronously
-                    // when the response is available
- 
-                }).
-                error(function(data, status, headers, config) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                });
- 
-        };
-    }
-    ]);
+    app.controller('contactController', function($scope, $http) {
+        $scope.submit = function(){
+           var data = {
+               name: $scope.name,
+               email: $scope.email,
+               mobile:$scope.mobile,
+               subject:$scope.subject,
+               message:$scope.message
+           };
+        $http.post('/contact/', data).success(function(response) {
+            console.log("Success");
+        }, function(response) {
+            console.log("Contact form posting failed");
+        });
+       };
+    });
